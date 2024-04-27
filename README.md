@@ -40,13 +40,13 @@ L'externalisation de l'infrastructure informatique : l'objectif central des four
 
 L'externalisation de l'infrastructure informatique vers le cloud présente de nombreux avantages pour les entreprises, notamment :
 
-Réduction des coûts :Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle région sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
+Réduction des coûts: Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle [région](./aDocumentation/Regions/) sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
 
-Flexibilité et évolutivité :Le cloud permet une adaptabilité rapide aux changements d'activité, facilitant l'augmentation ou la réduction des ressources en fonction des besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, permettant une anticipation et une gestion aisée des périodes de forte demande.
+Flexibilité et évolutivité: Le cloud permet une adaptabilité rapide aux changements d'activité, facilitant l'augmentation ou la réduction des ressources en fonction des besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, permettant une anticipation et une gestion aisée des périodes de forte demande.
 
-Accessibilité et disponibilité :Les services cloud offrent un accès aux données et aux applications depuis n'importe où, favorisant le travail à distance, la collaboration facilitée et une meilleure productivité. De plus, les infrastructures cloud redondantes garantissent une disponibilité 24/7 et réduisent les risques de pannes et de perte de données, offrant ainsi une continuité de service optimale.
+Accessibilité et disponibilité: Les services cloud offrent un accès aux données et aux applications depuis n'importe où, favorisant le travail à distance, la collaboration facilitée et une meilleure productivité. De plus, les infrastructures cloud redondantes garantissent une disponibilité 24/7 et réduisent les risques de pannes et de perte de données, offrant ainsi une continuité de service optimale.
 
-Innovation et expertise :En optant pour le cloud, les entreprises peuvent accéder aux dernières technologies et bénéficier des mises à jour constantes pour rester à la pointe du progrès. De plus, en déléguant l'infrastructure informatique à des spécialistes du cloud, elles peuvent se concentrer sur leurs activités stratégiques tout en profitant de l'expertise des fournisseurs cloud pour optimiser leur utilisation du cloud.
+Innovation et expertise: En optant pour le cloud, les entreprises peuvent accéder aux dernières technologies et bénéficier des mises à jour constantes pour rester à la pointe du progrès. De plus, en déléguant l'infrastructure informatique à des spécialistes du cloud, elles peuvent se concentrer sur leurs activités stratégiques tout en profitant de l'expertise des fournisseurs cloud pour optimiser leur utilisation du cloud.
 
 ### Presentation: IaaS, PaaS, SaaS, CaaS et FaaS dans GCP et Azure
 
@@ -139,8 +139,15 @@ Service proposé par les providers cloud gcp et azure
 CLOUD_PROVIDERS_SERVICES
 ├── README.md
 ├── services_name
-│   ├── Makefile 
-│   ├── deploy.yml
+│   ├── gcp
+|   │   ├── deploy.yml
+|   │   ├── .env # Vos secret
+|   │   ├── account
+|   |   │   ├── my-account.json # Complement de secrets
+|   ├── azure
+|   │   ├── deploy.yml
+|   │   ├── .env # Vos secret
+│   ├── Makefile
 │   └── ...
 ```
 
