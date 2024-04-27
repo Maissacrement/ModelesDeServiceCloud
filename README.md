@@ -116,9 +116,14 @@ Le choix du modèle de service cloud approprié dépend de plusieurs facteurs, t
 
 ## Mecanisme de deploiement Iac
 
-Dans cet environnement, vous configurez les secrets associés à votre compte utilisateur dédié au déploiement. Une fois authentifié avec les bonnes autorisations associées à votre profil, vous pouvez manipuler toutes les ressources fournies par votre fournisseur de cloud. Que ce soit par le biais d'appels API effectués par votre CLI ou par le module Ansible associé, vous effectuez dans tous les cas une requête nécessitant cette négociation.
 
-Exemple sur azure and gcp:
+Dans cet environnement, la mise en place des ressources sur le cloud est réalisée à l'aide d'une approche d'Infrastructure as Code (IaC). Avant tout déploiement, vous configurez les secrets associés à votre compte utilisateur dédié au déploiement, tels que les identifiants d'authentification et les clés d'accès. Une fois que vous êtes authentifié avec les bonnes autorisations associées à votre profil, vous pouvez utiliser ces informations pour déployer et gérer les ressources fournies par votre fournisseur de cloud.
+
+Le mécanisme de déploiement IaC consiste à décrire l'infrastructure souhaitée dans des fichiers de configuration, qui sont ensuite interprétés par des outils tels que des CLI (Command Line Interface) ou des modules comme Ansible. Ces outils effectuent des appels API vers le fournisseur de cloud pour créer, configurer ou supprimer les ressources selon les spécifications définies dans les fichiers de configuration.
+
+Dans ce processus, chaque requête effectuée, que ce soit par le biais d'appels API via votre CLI ou par le module Ansible associé, nécessite une négociation avec le fournisseur de cloud. Cette négociation comprend l'échange de données d'authentification et l'établissement d'une session sécurisée pour garantir l'accès autorisé aux ressources et la manipulation sécurisée des données.
+
+Les diagrammes présentant la négociation entre vos credentials sur votre machine et le provider cloud, que ce soit Azure ou GCP, illustrent visuellement cette phase cruciale de la mise en place des ressources, mettant en lumière les échanges de données et les mécanismes de sécurité mis en œuvre pour assurer un déploiement fiable et sécurisé dans le cloud.
 
 <div style="position:relative;width:100%">
     <img style="position:relative;float: left !important;width:50%" src="./assets/design-cli-deploy.png"><img style="position:relative;float: left !important;width:50%;" src="./assets/gcp.png">
@@ -155,27 +160,25 @@ Le Makefile démarre un conteneur Docker en arrière-plan contenant les modules 
 
 Normalement vous devrez allez a la racine du ficher services_name generalement nommé chez moi comme une offre de service cloud. Par la suite vous devrez dans chaque repo tapez `make deploy_${cloud_provider}_${service_name}` ou pour les exercices `make deploy_${cloud_provider}_exo_${service_name}`. example: `make deploy_gcp_caas` or `make deploy_azure_faas`
 
+
 2. Configuration
 
-Remplacer le '.env.example' et renommez le en '.env' dans chaque dossier ouvous verrer ce fichier
-ajoutez-y vos credentials azure student
+Pour configurer le projet, recherchez le fichier nommé '.env.example' dans chaque dossier où il est présent, puis renommez-le en '.env'. Dans ce fichier, ajoutez vos identifiants et mots de passe pour Azure Student, Azure App Service et GCP.
 
-Pour les deploiement azure:
+Pour les déploiements Azure, vous devrez ajouter les informations suivantes :
 
 ```bash
 email: bdx-XX@...
 password: myPass
 ```
 
-Pour les deploiement gcp:
+Pour les déploiements GCP, vous aurez besoin d'ajouter ces informations :
 
 ```bash
 GCP_PROJECT_NAME=#Your project id
-SERVICE_ACCOUNT_PRIVATE_KEY_JSON=/workdir/account/my-account.json #Default path to your api secret key
+SERVICE_ACCOUNT_PRIVATE_KEY_JSON=/workdir/account/my-account.json #Default path to your api secret key inside the container
 SERVICE_ACCOUNT_NAME=#Name of your service account
 ```
-
-
 
 ## Approfondissez vos connaissances avec des cours en ligne et des vidéos.
 
