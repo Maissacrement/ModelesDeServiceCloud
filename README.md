@@ -45,7 +45,7 @@ Cette externalisation présente de nombreux avantages pour les entreprises, dont
 1. Réduction des coûts:
 
     
-    Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. Cependant, pour les petites infrastructures avec des besoins stables et prévisibles, l'achat d'un serveur dédié peut être une alternative plus rentable, offrant un contrôle total sur les coûts et les mises à niveau. Chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle. [Voir les cout sur le coud](./aDocumentation/GestionDesCouts/README.md)
+    Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. Cependant, pour les petites infrastructures avec des besoins stables et prévisibles, l'achat d'un serveur dédié peut être une alternative plus rentable, offrant un contrôle total sur les coûts et les mises à niveau. Chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle. [Voir les cout sur le cloud](./aDocumentation/GestionDesCouts/README.md)
 
 2. Flexibilité et évolutivité :
 
@@ -125,6 +125,7 @@ Exemple sur azure and gcp:
 
 <img style="position:relative;float: left;width:50%;" src="./assets/gcp.png">
 
+<br/>
 <br style="clear:both" />
 
 
