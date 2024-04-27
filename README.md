@@ -172,7 +172,11 @@ SERVICE_ACCOUNT_NAME=#Name of your service account
 
 [En savoir plus sur le container de deploiement](https://github.com/Maissacrement/azureDeploy)
 
-## Approfondissez vos connaissances avec des cours en ligne et des vidéos.
+# Fork: how to update git fork
+
+[how_to_sync_your_fork](https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github)
+
+# Approfondissez vos connaissances avec des cours en ligne et des vidéos.
 
 ```yaml
 Openstack:
