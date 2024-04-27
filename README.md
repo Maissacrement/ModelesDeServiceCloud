@@ -22,10 +22,10 @@ Pour illustrer cette différence, examinons deux photos : l'une montrant une con
 S'appuyer sur une image mentale pour gérer les infrastructures comporte ses limites et ses pièges, conduisant souvent à des erreurs, des omissions et des incohérences. En adoptant Infrastructure as Code, les organisations peuvent atténuer ces risques et rationaliser leurs opérations grâce à une approche plus fiable et automatisée de la gestion de l'infrastructure.
 
 
-<img align="left" style="display: inline-block;float: left;width:70%;" src="./assets/storage_account.png">
-<img align="right" style="display: inline-block;float: left;width:30%;" src="./assets/ansible-storage-account.png">
+<img align="left" style="width:70%;" src="./assets/storage_account.png">
+<img align="right" style="width:30%;" src="./assets/ansible-storage-account.png">
 
-<br style="clear:both" />
+<br style="" />
 
 ## Cloud Privé vs Cloud Public
 
