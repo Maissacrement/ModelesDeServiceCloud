@@ -17,7 +17,7 @@ Un compte de service sur Google Cloud Platform (GCP) est un compte spécifique c
 Dans la section "Clés" de votre compte de service, générez une clé d'API au format JSON. En cliquant sur "Ajouter une clé".
 Placez cette clé dans le répertoire racine de votre projet dans le repertoire gcp. Par défaut, la clé doit être stockée dans "./gcp/account/my-account.json" pour chaque fichier de projet (Iaas, Faas, Caas, Paas, Saas).
 
-<img src="./../../assets/iam-gcp.png">
+<img src="../../assets/iam-gcp.png">
 
 # Permissions
 
