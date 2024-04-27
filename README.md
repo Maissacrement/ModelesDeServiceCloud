@@ -158,7 +158,7 @@ CLOUD_PROVIDERS_SERVICES
 
 Le Makefile démarre un conteneur Docker en arrière-plan contenant les modules d'identification et de connexion aux API pour GCP et Azure. Ce conteneur reste actif uniquement pendant l'exécution du script Ansible, ce qui limite son impact sur le système. Cela vise à minimiser la durée de vie des variables d'environnement dans le système pendant le déploiement.
 
-Normalement vous devrez allez a la racine du ficher services_name generalement nommé chez moi comme une offre de service cloud. Par la suite vous devrez dans chaque repo tapez `make deploy_${cloud_provider}_${service_name}` ou pour les exercices `make deploy_${cloud_provider}_exo_${service_name}`. example: `make deploy_gcp_caas` or `make deploy_azure_faas`
+Normalement vous devrez allez a la racine du ficher services_name generalement nommé chez moi comme une offre de service cloud. Par la suite vous devrez dans chaque repo tapez `make deploy_${cloud_provider}_${service_name}` ou pour les exercices `make deploy_${cloud_provider}_exo_${service_name}`. exemple: `make deploy_gcp_caas` or `make deploy_azure_faas`
 
 
 2. Configuration
@@ -179,6 +179,8 @@ GCP_PROJECT_NAME=#Your project id
 SERVICE_ACCOUNT_PRIVATE_KEY_JSON=/workdir/account/my-account.json #Default path to your api secret key inside the container
 SERVICE_ACCOUNT_NAME=#Name of your service account
 ```
+
+[En savoir plus sur le container de deploiement](https://github.com/Maissacrement/azureDeploy)
 
 ## Approfondissez vos connaissances avec des cours en ligne et des vidéos.
 
