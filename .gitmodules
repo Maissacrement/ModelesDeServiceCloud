@@ -1,3 +1,0 @@
-[submodule "gke-docker"]
-	path = gke-docker
-	url = git@github.com:Maissacrement/ansible-gke.git
