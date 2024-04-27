@@ -27,7 +27,7 @@ S'appuyer sur une image mentale pour gérer les infrastructures comporte ses lim
 <img align="left" style="width:70%;" src="./assets/storage_account.png" /><img align="right" style="width:30%;" src="./assets/ansible-storage-account.png" />
 
 <br/>
-<br/>
+<br style="clear:both"/>
 
 
 ## Cloud Privé vs Cloud Public
