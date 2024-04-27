@@ -33,3 +33,5 @@ Sélectionnez le rôle "Propriétaire" dans la catégorie "Instance de base" et 
 <img src="./../../assets/role-attribution-gcp.png">
 
 Dans cette image, les adresses e-mail associées à votre compte sont dissimulées dans un cadre noir. Vous devrez choisir de mettre à jour les comptes de service qui utilisent la clé API afin qu'ils puissent négocier les droits d'accès à l'API distante de votre service cloud.
+
+Ces etapes sont necessaire si vous souhaitez utilisé l'api de google.

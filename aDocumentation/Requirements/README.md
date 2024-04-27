@@ -21,10 +21,6 @@ sudo yum update && sudo yum install make
 
 ### Docker :Suivez les instructions d'installation disponibles sur le site officiel de Docker [(Guide d'installation Docker)](https://docs.docker.com/engine/install).
 
-# Déploiement avec Ansible via Docker et Make :
-
-Une fois que vous avez installé Make et Docker, suivez les étapes ci-dessous pour déployer des instances cloud via Ansible sans avoir à configurer votre PC :
-
 I
 
 
