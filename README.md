@@ -121,9 +121,9 @@ Dans cet environnement, vous configurez les secrets associés à votre compte ut
 Exemple sur azure and gcp:
 
 
-<img style="position:relative;float: left;width:50%" src="./assets/design-cli-deploy.png">
+<img style="position:relative;float: left !important;width:50%" src="./assets/design-cli-deploy.png">
 
-<img style="position:relative;float: left;width:50%;" src="./assets/gcp.png">
+<img style="position:relative;float: left !important;width:50%;" src="./assets/gcp.png">
 
 <br/>
 <br style="clear:both" />
