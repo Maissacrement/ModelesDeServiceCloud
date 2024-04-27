@@ -24,7 +24,7 @@ S'appuyer sur une image mentale pour gérer les infrastructures comporte ses lim
 
 
 
-<img align="right" style="width:70%;float:left" src="./assets/storage_account.png" /><img style="width:30%;float: left" src="./assets/ansible-storage-account.png" />
+<img style="width:70%;position:relative;float:left" src="./assets/storage_account.png" /><img style="width:30%;position:relative;float:left" src="./assets/ansible-storage-account.png" />
 
 <br/>
 <br style="clear:both"/>
