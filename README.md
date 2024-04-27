@@ -36,29 +36,17 @@ Lorsque vous explorez les options de cloud computing, il est important de conna�
 
 <img src="./assets/public-private-cloud.avif">
 
-## Les services cloud (Iaas,Paas,Faas,Caas) proposé par GCP, Azure et Aws
+L'externalisation de l'infrastructure informatique : l'objectif central des fournisseurs cloud
 
-Intro: L'externalisation de l'infrastructure informatique : l'objectif central des providers cloud
+L'externalisation de l'infrastructure informatique vers le cloud présente de nombreux avantages pour les entreprises, notamment :
 
-Cette externalisation présente de nombreux avantages pour les entreprises, dont les plus importants sont :
+Réduction des coûts :Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle région sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
 
-1. Réduction des coûts:
+Flexibilité et évolutivité :Le cloud permet une adaptabilité rapide aux changements d'activité, facilitant l'augmentation ou la réduction des ressources en fonction des besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, permettant une anticipation et une gestion aisée des périodes de forte demande.
 
-    
-    Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. Cependant, pour les petites infrastructures avec des besoins stables et prévisibles, l'achat d'un serveur dédié peut être une alternative plus rentable, offrant un contrôle total sur les coûts et les mises à niveau. Chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle. [Voir les cout sur le cloud](./aDocumentation/GestionDesCouts/README.md)
+Accessibilité et disponibilité :Les services cloud offrent un accès aux données et aux applications depuis n'importe où, favorisant le travail à distance, la collaboration facilitée et une meilleure productivité. De plus, les infrastructures cloud redondantes garantissent une disponibilité 24/7 et réduisent les risques de pannes et de perte de données, offrant ainsi une continuité de service optimale.
 
-2. Flexibilité et évolutivité :
-
-    Notre système offre une adaptabilité rapide aux changements d'activité, permettant une augmentation ou une réduction des ressources en quelques clics pour répondre aux besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, ce qui permet une anticipation et une gestion aisée des périodes de forte demande.
-
-3. Accessibilité et disponibilité :
-
-    Accès aux données et applications depuis n'importe où: Travail à distance, collaboration facilitée et meilleure productivité. Disponibilité 24/7: Infrastructures cloud redondantes pour une continuité de service optimale. Réduction des risques de pannes et perte de données: Expertise et technologies de pointe pour une sécurité renforcée.
-
-4. Innovation et expertise :
-
-    Accès aux dernières technologies cloud: Bénéficier des innovations et mises à jour constantes pour rester à la pointe du progrès. Se concentrer sur son cœur de métier: Déléguer l'infrastructure informatique à des spécialistes pour se concentrer sur les activités stratégiques. Profiter de l'expertise des providers cloud: Accéder à des conseils et à une assistance de qualité pour optimiser l'utilisation du cloud.
-
+Innovation et expertise :En optant pour le cloud, les entreprises peuvent accéder aux dernières technologies et bénéficier des mises à jour constantes pour rester à la pointe du progrès. De plus, en déléguant l'infrastructure informatique à des spécialistes du cloud, elles peuvent se concentrer sur leurs activités stratégiques tout en profitant de l'expertise des fournisseurs cloud pour optimiser leur utilisation du cloud.
 
 ### Presentation: IaaS, PaaS, SaaS, CaaS et FaaS dans GCP et Azure
 
@@ -124,6 +112,8 @@ Le mécanisme de déploiement IaC consiste à décrire l'infrastructure souhait�
 Dans ce processus, chaque requête effectuée, que ce soit par le biais d'appels API via votre CLI ou par le module Ansible associé, nécessite une négociation avec le fournisseur de cloud. Cette négociation comprend l'échange de données d'authentification et l'établissement d'une session sécurisée pour garantir l'accès autorisé aux ressources et la manipulation sécurisée des données.
 
 Les diagrammes présentant la négociation entre vos credentials sur votre machine et le provider cloud, que ce soit Azure ou GCP, illustrent visuellement cette phase cruciale de la mise en place des ressources, mettant en lumière les échanges de données et les mécanismes de sécurité mis en œuvre pour assurer un déploiement fiable et sécurisé dans le cloud.
+
+[En savoir plus sur les permissions de vos providers cloud](./aDocumentation/Permissions)
 
 <div style="position:relative;width:100%">
     <img style="position:relative;float: left !important;width:50%" src="./assets/design-cli-deploy.png"><img style="position:relative;float: left !important;width:50%;" src="./assets/gcp.png">
