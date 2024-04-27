@@ -179,11 +179,15 @@ SERVICE_ACCOUNT_NAME=#Name of your service account
 
 [En savoir plus sur le container de deploiement](https://github.com/Maissacrement/azureDeploy)
 
-# Fork: how to update git fork
+### Git
+
+Git est bien plus qu'un simple outil de gestion de version, c'est un pilier fondamental de notre approche d'Infrastructure as Code. Il nous permet de relever plusieurs défis cruciaux dans le développement et la gestion de notre infrastructure cloud. Tout d'abord, Git offre une gestion de version robuste, nous permettant de suivre les modifications apportées à notre code d'infrastructure au fil du temps. Cette fonctionnalité assure la traçabilité et la fiabilité de notre infrastructure, tout en facilitant la collaboration entre les membres de l'équipe. En parlant de collaboration, Git favorise également le travail d'équipe en fournissant des fonctionnalités telles que les branches, les pull requests et les commentaires intégrés, ce qui rend la collaboration efficace et le processus de développement itératif. De plus, Git est souvent intégré à des outils de CI/CD, automatisant ainsi les tests et le déploiement de notre infrastructure dès qu'une modification est apportée au code. Cette intégration continue garantit une livraison rapide et fiable des changements, tout en minimisant les erreurs. Enfin, Git assure une visibilité complète sur l'évolution de notre infrastructure au fil du temps, ce qui facilite le suivi des changements et répond aux exigences d'audit et de conformité. En résumé, Git est essentiel pour relever les défis de la gestion de l'infrastructure cloud, offrant stabilité, fiabilité et flexibilité à notre processus de développement.
+
+#### Fork: how to update git fork
 
 [how_to_sync_your_fork](https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github)
 
-# Approfondissez vos connaissances avec des cours en ligne et des vidéos.
+## Approfondissez vos connaissances avec des cours en ligne et des vidéos.
 
 ```yaml
 Openstack:
