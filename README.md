@@ -1,10 +1,11 @@
-# Cloud Supdevinci baschelor 3 2024
+# Cloud Supdevinci bachelor 3 2024
 
 ## Infrastructure
 
 [Redhat](https://www.redhat.com/en/topics/cloud-computing/what-is-it-infrastructure): Les infrastructures de technologie de l'information (IT) sont les composants nécessaires pour faire fonctionner et gérer environnements IT d'entreprise. 
 
 Il sont generalement decris sous forme de schema appellé aussi diagramme.  Les schémas ou diagrammes des infrastructures informatiques permettent de visualiser la disposition des composants matériels et logiciels, ainsi que leurs interconnexions. Cette représentation visuelle est cruciale pour comprendre la structure et le fonctionnement de l'infrastructure, facilitant ainsi la planification, la gestion et la prise de décision. En effet, en observant un tel diagramme, les professionnels de l'IT peuvent rapidement identifier les points de congestion, les éventuels goulets d'étranglement et les zones de vulnérabilité, ce qui leur permet de mettre en œuvre des solutions adaptées pour optimiser les performances et renforcer la sécurité du système.
+[La suite dans le cours](./Cours/5.ITInfrastructure.md)
 
 Exemple: Ce schéma représente une connexion VPN classique entre votre réseau d'entreprise et le service cloud. Il met en évidence la liaison sécurisée établie par les tunnels VPN IPsec entre les hôtes sur site et les instances de machines virtuelles dans le cloud. Cette infrastructure assure une connectivité fiable et chiffrée, permettant un accès sécurisé aux ressources cloud depuis le réseau local de l'entreprise. [En savoir plus](https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies?hl=fr)
 
@@ -12,16 +13,13 @@ Exemple: Ce schéma représente une connexion VPN classique entre votre réseau 
 
 ## Transition vers l'Infrastructure as Code (IaC)
 
-La transition vers l'Infrastructure as Code (IaC) est une évolution logique dans la gestion des infrastructures informatiques. Avant cette approche, la gestion des ressources impliquait souvent des processus manuels sujets à des erreurs et à des retards. L'IaC offre une alternative radicalement différente en représentant les ressources système sous forme de code, ce qui permet une automatisation et une reproductibilité accrues.
+La transition vers l'Infrastructure as Code (IaC) représente une évolution logique dans la gestion des infrastructures informatiques. Avant cette approche, la gestion des ressources était souvent sujette à des processus manuels propices aux erreurs et aux retards. Avec l'IaC, les ressources système sont représentées sous forme de code, offrant ainsi une automatisation et une reproductibilité accrues.
 
-L'un des avantages les plus évidents de l'IaC est la possibilité de versionner l'infrastructure, ce qui facilite la collaboration entre plusieurs intervenants et permet de suivre en temps réel l'évolution du système. L'utilisation d'outils de versionnement comme Git devient donc indispensable pour garantir la cohérence et la fiabilité de l'infrastructure.
+L'un des avantages majeurs de l'IaC est la possibilité de versionner l'infrastructure, facilitant ainsi la collaboration entre les intervenants et permettant de suivre en temps réel l'évolution du système. L'utilisation d'outils de versionnement comme Git devient alors indispensable pour garantir la cohérence et la fiabilité de l'infrastructure.
 
-Dans cette transition vers l'IaC, l'importance de ne pas compter sur une image mentale de l'infrastructure devient évidente. L'image mentale est sujette à des erreurs de mémoire, à des oublis et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables qui peuvent être réutilisées, modifiées et déployées de manière cohérente.
+Dans cette transition, il est crucial de ne pas se fier à une image mentale de l'infrastructure. Cette approche est sujette à des erreurs de mémoire et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables, favorisant ainsi une gestion plus précise et fiable des ressources. [La suite dans le cours](./Cours/6.IaC.md)
 
-Pour illustrer cette différence, examinons deux photos : l'une montrant une configuration manuelle de ressources et l'autre un script Ansible représentant cette même configuration. Bien que les données semblent similaires dans les deux cas, il est clair que l'une est une simple image non exploitable, tandis que l'autre est un script personnalisable et reproductible. 
-S'appuyer sur une image mentale pour gérer les infrastructures comporte ses limites et ses pièges, conduisant souvent à des erreurs, des omissions et des incohérences. En adoptant Infrastructure as Code, les organisations peuvent atténuer ces risques et rationaliser leurs opérations grâce à une approche plus fiable et automatisée de la gestion de l'infrastructure.
-
-
+Illustrons cette différence par deux exemples: une configuration manuelle de ressources versus un script Ansible représentant la même configuration. Bien que les données semblent similaires, il est clair que l'un est une simple image non exploitable tandis que l'autre est un script personnalisable et reproductible. En adoptant l'Infrastructure as Code, les organisations peuvent atténuer les risques d'erreurs et rationaliser leurs opérations grâce à une approche plus fiable et automatisée de la gestion de l'infrastructure. 
 
 
 <img style="width:70%;position:relative;float:left" src="./assets/storage_account.png" /><img style="width:30%;position:relative;float:left" src="./assets/ansible-storage-account.png" />
@@ -36,11 +34,9 @@ Lorsque vous explorez les options de cloud computing, il est important de conna�
 
 <img src="./assets/public-private-cloud.avif">
 
-L'externalisation de l'infrastructure informatique : l'objectif central des fournisseurs cloud
-
 L'externalisation de l'infrastructure informatique vers le cloud présente de nombreux avantages pour les entreprises, notamment :
 
-Réduction des coûts: Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle [région](./aDocumentation/Regions/) sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
+Réduction des coûts: Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle [régions](./Cours/5.Regions.md) sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
 
 Flexibilité et évolutivité: Le cloud permet une adaptabilité rapide aux changements d'activité, facilitant l'augmentation ou la réduction des ressources en fonction des besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, permettant une anticipation et une gestion aisée des périodes de forte demande.
 
@@ -48,91 +44,24 @@ Accessibilité et disponibilité: Les services cloud offrent un accès aux donn�
 
 Innovation et expertise: En optant pour le cloud, les entreprises peuvent accéder aux dernières technologies et bénéficier des mises à jour constantes pour rester à la pointe du progrès. De plus, en déléguant l'infrastructure informatique à des spécialistes du cloud, elles peuvent se concentrer sur leurs activités stratégiques tout en profitant de l'expertise des fournisseurs cloud pour optimiser leur utilisation du cloud.
 
-### Presentation: IaaS, PaaS, SaaS, CaaS et FaaS dans GCP et Azure
+## Services Cloud (IaaS, PaaS, SaaS, CaaS et FaaS) dans GCP et Azure
 
-Le cloud computing offre une multitude de modèles de service pour répondre aux besoins variés des utilisateurs, chacun proposant un niveau d'abstraction et de gestion des ressources distinct. Explorons ces modèles et leur déclinaison dans les plateformes cloud majeures, Google Cloud Platform (GCP) et Microsoft Azure.
+Le cloud computing offre une multitude de modèles de service pour répondre aux besoins variés des utilisateurs, chacun proposant un niveau d'abstraction et de gestion des ressources distinct. Explorons ces modèles et leur déclinaison dans les plateformes cloud majeures, Google Cloud Platform (GCP) et Microsoft Azure. [La suite dans le cours](./Cours/4.ServicesCloud.md)
 
 <img src="./assets/modeles-de-services-cloud.png">
 
-### On-Premise
 
-On-Premise represente votre solution cloud privé et ses modele de services pré-implementé notamment chez [OpenStack](https://www.openstack.org/) ou encore [OpenFass](https://www.openfaas.com/)
-
-### IaaS (Infrastructure as a Service):
-
-Avec IaaS, vous louez des ressources informatiques fondamentales telles que des serveurs virtuels, du stockage, du réseau et des systèmes d'exploitation. Vous bénéficiez d'un contrôle total sur ces ressources, mais devez gérer vous-même la configuration, la maintenance et la sécurité.
-
-GCP: Compute Engine, Google Cloud Storage, Google Cloud VPC et Google Kubernetes Engine sont des exemples de services IaaS proposés par GCP.
-
-Azure: Azure Virtual Machines, Azure Blob Storage, Azure Virtual Network et Azure Kubernetes Service sont les équivalents IaaS d'Azure.
-
-### PaaS (Platform as a Service):
-
-PaaS offre aux développeurs une plateforme préconfigurée pour le développement, le déploiement et l'exécution d'applications. Le PaaS s'occupe de la gestion de l'infrastructure sous-jacente, permettant aux développeurs de se concentrer sur la création d'applications.
-
-GCP: App Engine, Google Cloud Functions et Google Kubernetes Engine (en mode PaaS) sont des exemples de services PaaS proposés par GCP.
-
-Azure: Azure App Service, Azure Functions et Azure Kubernetes Service (en mode PaaS) sont les équivalents PaaS d'Azure.
-
-### SaaS (Software as a Service):
-
-SaaS offre aux utilisateurs des applications logicielles hébergées et gérées par le fournisseur de cloud. Vous accédez aux applications via un navigateur web ou une API, sans avoir à les installer ou à les gérer vous-même.
-
-GCP: Google Workspace, G Suite, et Salesforce sont des exemples d'applications SaaS populaires exécutées sur GCP.
-
-Azure: Microsoft 365, Dynamics 365 et Adobe Creative Cloud sont des exemples d'applications SaaS populaires exécutées sur Azure.
-
-### CaaS (Container as a Service):
-
-CaaS fournit aux développeurs une plateforme pour déployer et exécuter des applications conteneurisées. Les conteneurs sont des unités d'application légères et autonomes qui incluent tout le nécessaire pour s'exécuter, y compris le code, les bibliothèques et les dépendances.
-
-GCP: Google Kubernetes Engine (en mode CaaS) et Anthos Config Management sont des exemples de services CaaS proposés par GCP.
-
-Azure: Azure Kubernetes Service (en mode CaaS) et Azure Container Instances sont les équivalents CaaS d'Azure.
-
-### FaaS (Function as a Service):
-
-FaaS permet aux développeurs d'exécuter des fragments de code, ou fonctions, sans avoir à gérer l'infrastructure ou les serveurs. Vous payez uniquement pour les ressources utilisées lors de l'exécution de vos fonctions.
-
-GCP: Google Cloud Functions est le principal service FaaS proposé par GCP.
-
-Azure: Azure Functions est l'équivalent FaaS d'Azure.
-
-Choisir le bon modèle de service cloud :
-
-Le choix du modèle de service cloud approprié dépend de plusieurs facteurs, tels que les besoins spécifiques de l'utilisateur, le niveau de contrôle et de flexibilité requis, et les compétences techniques disponibles.
-
-## Mecanisme de deploiement Iac
+## Ansible
 
 
-Dans cet environnement, la mise en place des ressources sur le cloud est réalisée à l'aide d'une approche d'Infrastructure as Code (IaC). Avant tout déploiement, vous configurez les secrets associés à votre compte utilisateur dédié au déploiement, tels que les identifiants d'authentification et les clés d'accès. Une fois que vous êtes authentifié avec les bonnes autorisations associées à votre profil, vous pouvez utiliser ces informations pour déployer et gérer les ressources fournies par votre fournisseur de cloud.
-
-Le mécanisme de déploiement IaC consiste à décrire l'infrastructure souhaitée dans des fichiers de configuration, qui sont ensuite interprétés par des outils tels que des CLI (Command Line Interface) ou des modules comme Ansible. Ces outils effectuent des appels API vers le fournisseur de cloud pour créer, configurer ou supprimer les ressources selon les spécifications définies dans les fichiers de configuration.
-
-Dans ce processus, chaque requête effectuée, que ce soit par le biais d'appels API via votre CLI ou par le module Ansible associé, nécessite une négociation avec le fournisseur de cloud. Cette négociation comprend l'échange de données d'authentification et l'établissement d'une session sécurisée pour garantir l'accès autorisé aux ressources et la manipulation sécurisée des données.
-
-Les diagrammes présentant la négociation entre vos credentials sur votre machine et le provider cloud, que ce soit Azure ou GCP, illustrent visuellement cette phase cruciale de la mise en place des ressources, mettant en lumière les échanges de données et les mécanismes de sécurité mis en œuvre pour assurer un déploiement fiable et sécurisé dans le cloud.
-
-[En savoir plus sur les permissions de vos providers cloud](./aDocumentation/Permissions)
-
-<div style="position:relative;width:100%">
-    <img style="position:relative;float: left !important;width:50%" src="./assets/design-cli-deploy.png"><img style="position:relative;float: left !important;width:50%;" src="./assets/gcp.png">
-</div>
-<br/>
-<br style="clear:both" />
-
-
-### Ansible
-
+Ansible simplifie la gestion des opérations côté administrateur système en automatisant le déploiement, la configuration et la maintenance de l'infrastructure, ce qui permet d'améliorer l'efficacité et la cohérence des opérations.
 Utilisé les modules [azure](https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html) et [gcp](https://docs.ansible.com/ansible/latest/collections/google/cloud/index.html) et n'hesitez pas a utilisé la cli via le module 'shell' ansible des providers cloud [gcp](https://cloud.google.com/sdk/docs/scripting-gcloud?hl=fr) at [azure](https://learn.microsoft.com/fr-fr/cli/azure/reference-index?view=azure-cli-latest) pour des besoin plus fin.
 
 ### Comment deployer vos script Ansible ?
 
-`Docker` et `Make` sont les seuls dependance necessaire sur votre systeme ! [Voir les pre-requis](./aDocumentation/Requirements/README.md)
+`Docker` et `Make` sont les seuls dependance necessaire sur votre systeme ! [Voir les pre-requis et les spécificités concernant le fichier Makefile et comment l'utiliser.](./Cours/10.DeployInstruction.md)
 
-Le Makefile disponible à la racine de chaque projet permet l'utilisation facile des CLIs cloud et des modules Ansible sans nécessiter de téléchargement supplémentaire. Tout est pré-embarqué dans un conteneur Docker, simplifiant ainsi le déploiement des services cloud sans aucune manipulation supplémentaire de la part de l'utilisateur final.
-
-[Tout au sujet du Makefile](./aDocumentation/UseMakefileToDeploy)
+Le Makefile disponible à la racine de chaque projet permet l'utilisation facile de la cli de votre provider cloud (az cli ou gcloud) et des modules Ansible sans nécessiter de téléchargement supplémentaire. Tout est pré-embarqué dans un conteneur Docker, simplifiant ainsi le déploiement des services cloud sans aucune manipulation supplémentaire de la part de l'utilisateur final.
 
 ```bash
 Service proposé par les providers cloud gcp et azure
@@ -140,52 +69,20 @@ CLOUD_PROVIDERS_SERVICES
 ├── README.md
 ├── services_name
 │   ├── gcp
-|   │   ├── deploy.yml
-|   │   ├── .env # Vos secret
-|   │   ├── account
+|   │   ├── deploy.yml # Votre script de deploiement
+|   │   ├── .env.exemple # Vos secret
+|   │   ├── .env # N'existe pas! Copiez le .env.exemple
+|   │   ├── account # N'existe pas! Uploader votre json
 |   |   │   ├── my-account.json # Complement de secrets
 |   ├── azure
 |   │   ├── deploy.yml
 |   │   ├── .env # Vos secret
-│   ├── Makefile
+│   ├── Makefile # L'executeur
 │   └── ...
 ```
-
-1. Fonctionnement:
-
-Le Makefile démarre un conteneur Docker en arrière-plan contenant les modules d'identification et de connexion aux API pour GCP et Azure. Ce conteneur reste actif uniquement pendant l'exécution du script Ansible, ce qui limite son impact sur le système. Cela vise à minimiser la durée de vie des variables d'environnement dans le système pendant le déploiement.
-
-Normalement vous devrez allez a la racine du ficher services_name generalement nommé chez moi comme une offre de service cloud. Par la suite vous devrez dans chaque repo tapez `make deploy_${cloud_provider}_${service_name}` ou pour les exercices `make deploy_${cloud_provider}_exo_${service_name}`. exemple: `make deploy_gcp_caas` or `make deploy_azure_faas`
-
-
-2. Configuration
-
-Pour configurer le projet, recherchez le fichier nommé '.env.example' dans chaque dossier où il est présent, puis renommez-le en '.env'. Dans ce fichier, ajoutez vos identifiants et mots de passe pour Azure Student, Azure App Service et GCP.
-
-Pour les déploiements Azure, vous devrez ajouter les informations suivantes :
-
-```bash
-email: bdx-XX@...
-password: myPass
-```
-
-Pour les déploiements GCP, vous aurez besoin d'ajouter ces informations :
-
-```bash
-GCP_PROJECT_NAME=#Your project id
-SERVICE_ACCOUNT_PRIVATE_KEY_JSON=/workdir/account/my-account.json #Default path to your api secret key inside the container
-SERVICE_ACCOUNT_NAME=#Name of your service account
-```
+Methodologie de travail et de deploiement en local depuis votre pc en utilisant ce Makefile. Afin de savoir comment deployé avec le Makefile [Voir le cours](./Cours/10.DeployInstruction.md)
 
 [En savoir plus sur le container de deploiement](https://github.com/Maissacrement/azureDeploy)
-
-### Git
-
-Git est bien plus qu'un simple outil de gestion de version, c'est un pilier fondamental de notre approche d'Infrastructure as Code. Il nous permet de relever plusieurs défis cruciaux dans le développement et la gestion de notre infrastructure cloud. Tout d'abord, Git offre une gestion de version robuste, nous permettant de suivre les modifications apportées à notre code d'infrastructure au fil du temps. Cette fonctionnalité assure la traçabilité et la fiabilité de notre infrastructure, tout en facilitant la collaboration entre les membres de l'équipe. En parlant de collaboration, Git favorise également le travail d'équipe en fournissant des fonctionnalités telles que les branches, les pull requests et les commentaires intégrés, ce qui rend la collaboration efficace et le processus de développement itératif. De plus, Git est souvent intégré à des outils de CI/CD, automatisant ainsi les tests et le déploiement de notre infrastructure dès qu'une modification est apportée au code. Cette intégration continue garantit une livraison rapide et fiable des changements, tout en minimisant les erreurs. Enfin, Git assure une visibilité complète sur l'évolution de notre infrastructure au fil du temps, ce qui facilite le suivi des changements et répond aux exigences d'audit et de conformité. En résumé, Git est essentiel pour relever les défis de la gestion de l'infrastructure cloud, offrant stabilité, fiabilité et flexibilité à notre processus de développement.
-
-#### Fork: how to update git fork
-
-[how_to_sync_your_fork](https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github)
 
 ## Approfondissez vos connaissances avec des cours en ligne et des vidéos.
 
@@ -209,3 +106,7 @@ https://github.com/Maissacrement/cloudprovision/blob/main/playbook.yml
 
 Adoptez une approche Infrastructure as Code pour générer des machines virtuelles exportables sur n'importe quelle machine, éliminant ainsi l'échange de snapshots
 https://github.com/Maissacrement/FreeBSDAnsible/blob/master/Vagrantfile
+
+## Comment mettre a jour votre fork github
+
+[how_to_sync_your_fork](https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github)
