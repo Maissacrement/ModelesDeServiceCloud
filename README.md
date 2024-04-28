@@ -5,7 +5,7 @@
 [Redhat](https://www.redhat.com/en/topics/cloud-computing/what-is-it-infrastructure): Les infrastructures de technologie de l'information (IT) sont les composants nécessaires pour faire fonctionner et gérer environnements IT d'entreprise. 
 
 Il sont generalement decris sous forme de schema appellé aussi diagramme.  Les schémas ou diagrammes des infrastructures informatiques permettent de visualiser la disposition des composants matériels et logiciels, ainsi que leurs interconnexions. Cette représentation visuelle est cruciale pour comprendre la structure et le fonctionnement de l'infrastructure, facilitant ainsi la planification, la gestion et la prise de décision. En effet, en observant un tel diagramme, les professionnels de l'IT peuvent rapidement identifier les points de congestion, les éventuels goulets d'étranglement et les zones de vulnérabilité, ce qui leur permet de mettre en œuvre des solutions adaptées pour optimiser les performances et renforcer la sécurité du système.
-[La suite dans le cours](./cours/5.ITInfrastructure.md)
+[La suite dans le cours](./cours/6.ITInfrastructure.md)
 
 Exemple: Ce schéma représente une connexion VPN classique entre votre réseau d'entreprise et le service cloud. Il met en évidence la liaison sécurisée établie par les tunnels VPN IPsec entre les hôtes sur site et les instances de machines virtuelles dans le cloud. Cette infrastructure assure une connectivité fiable et chiffrée, permettant un accès sécurisé aux ressources cloud depuis le réseau local de l'entreprise. [En savoir plus](https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies?hl=fr)
 
@@ -17,7 +17,7 @@ La transition vers l'Infrastructure as Code (IaC) représente une évolution log
 
 L'un des avantages majeurs de l'IaC est la possibilité de versionner l'infrastructure, facilitant ainsi la collaboration entre les intervenants et permettant de suivre en temps réel l'évolution du système. L'utilisation d'outils de versionnement comme Git devient alors indispensable pour garantir la cohérence et la fiabilité de l'infrastructure.
 
-Dans cette transition, il est crucial de ne pas se fier à une image mentale de l'infrastructure. Cette approche est sujette à des erreurs de mémoire et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables, favorisant ainsi une gestion plus précise et fiable des ressources. [La suite dans le cours](./cours/6.IaC.md)
+Dans cette transition, il est crucial de ne pas se fier à une image mentale de l'infrastructure. Cette approche est sujette à des erreurs de mémoire et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables, favorisant ainsi une gestion plus précise et fiable des ressources. [La suite dans le cours](./cours/7.IaC.md)
 
 Illustrons cette différence par deux exemples: une configuration manuelle de ressources versus un script Ansible représentant la même configuration. Bien que les données semblent similaires, il est clair que l'un est une simple image non exploitable tandis que l'autre est un script personnalisable et reproductible. En adoptant l'Infrastructure as Code, les organisations peuvent atténuer les risques d'erreurs et rationaliser leurs opérations grâce à une approche plus fiable et automatisée de la gestion de l'infrastructure. 
 
