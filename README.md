@@ -5,7 +5,7 @@
 [Redhat](https://www.redhat.com/en/topics/cloud-computing/what-is-it-infrastructure): Les infrastructures de technologie de l'information (IT) sont les composants nécessaires pour faire fonctionner et gérer environnements IT d'entreprise. 
 
 Il sont generalement decris sous forme de schema appellé aussi diagramme.  Les schémas ou diagrammes des infrastructures informatiques permettent de visualiser la disposition des composants matériels et logiciels, ainsi que leurs interconnexions. Cette représentation visuelle est cruciale pour comprendre la structure et le fonctionnement de l'infrastructure, facilitant ainsi la planification, la gestion et la prise de décision. En effet, en observant un tel diagramme, les professionnels de l'IT peuvent rapidement identifier les points de congestion, les éventuels goulets d'étranglement et les zones de vulnérabilité, ce qui leur permet de mettre en œuvre des solutions adaptées pour optimiser les performances et renforcer la sécurité du système.
-[La suite dans le cours](./Cours/5.ITInfrastructure.md)
+[La suite dans le cours](./cours/5.ITInfrastructure.md)
 
 Exemple: Ce schéma représente une connexion VPN classique entre votre réseau d'entreprise et le service cloud. Il met en évidence la liaison sécurisée établie par les tunnels VPN IPsec entre les hôtes sur site et les instances de machines virtuelles dans le cloud. Cette infrastructure assure une connectivité fiable et chiffrée, permettant un accès sécurisé aux ressources cloud depuis le réseau local de l'entreprise. [En savoir plus](https://cloud.google.com/network-connectivity/docs/vpn/concepts/classic-topologies?hl=fr)
 
@@ -17,7 +17,7 @@ La transition vers l'Infrastructure as Code (IaC) représente une évolution log
 
 L'un des avantages majeurs de l'IaC est la possibilité de versionner l'infrastructure, facilitant ainsi la collaboration entre les intervenants et permettant de suivre en temps réel l'évolution du système. L'utilisation d'outils de versionnement comme Git devient alors indispensable pour garantir la cohérence et la fiabilité de l'infrastructure.
 
-Dans cette transition, il est crucial de ne pas se fier à une image mentale de l'infrastructure. Cette approche est sujette à des erreurs de mémoire et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables, favorisant ainsi une gestion plus précise et fiable des ressources. [La suite dans le cours](./Cours/6.IaC.md)
+Dans cette transition, il est crucial de ne pas se fier à une image mentale de l'infrastructure. Cette approche est sujette à des erreurs de mémoire et à des interprétations subjectives. En revanche, un script Ansible représentant la configuration des ressources offre une alternative concrète et reproductible. Il contient des données précises et exploitables, favorisant ainsi une gestion plus précise et fiable des ressources. [La suite dans le cours](./cours/6.IaC.md)
 
 Illustrons cette différence par deux exemples: une configuration manuelle de ressources versus un script Ansible représentant la même configuration. Bien que les données semblent similaires, il est clair que l'un est une simple image non exploitable tandis que l'autre est un script personnalisable et reproductible. En adoptant l'Infrastructure as Code, les organisations peuvent atténuer les risques d'erreurs et rationaliser leurs opérations grâce à une approche plus fiable et automatisée de la gestion de l'infrastructure. 
 
@@ -36,7 +36,7 @@ Lorsque vous explorez les options de cloud computing, il est important de conna�
 
 L'externalisation de l'infrastructure informatique vers le cloud présente de nombreux avantages pour les entreprises, notamment :
 
-Réduction des coûts: Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle [régions](./Cours/5.Regions.md) sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
+Réduction des coûts: Le cloud computing offre une flexibilité et une évolutivité significatives, permettant aux entreprises de réduire les investissements initiaux, d'optimiser les dépenses opérationnelles et d'éliminer les frais de maintenance. De plus, grâce à la nature virtuelle du cloud, les entreprises peuvent s'installer numériquement dans n'importe quelle [régions](./cours/5.Regions.md) sans avoir à y investir physiquement. Cependant, chaque entreprise doit évaluer attentivement ses besoins spécifiques en infrastructure pour choisir la solution qui lui convient le mieux en termes de coûts, de performances et de contrôle.
 
 Flexibilité et évolutivité: Le cloud permet une adaptabilité rapide aux changements d'activité, facilitant l'augmentation ou la réduction des ressources en fonction des besoins fluctuants. Cela évite les problèmes de sous-dimensionnement ou de surdimensionnement en assurant un accès à la juste quantité de ressources au bon moment. De plus, la gestion des pics d'activité est simplifiée, permettant une anticipation et une gestion aisée des périodes de forte demande.
 
@@ -46,7 +46,7 @@ Innovation et expertise: En optant pour le cloud, les entreprises peuvent accéd
 
 ## Services Cloud (IaaS, PaaS, SaaS, CaaS et FaaS) dans GCP et Azure
 
-Le cloud computing offre une multitude de modèles de service pour répondre aux besoins variés des utilisateurs, chacun proposant un niveau d'abstraction et de gestion des ressources distinct. Explorons ces modèles et leur déclinaison dans les plateformes cloud majeures, Google Cloud Platform (GCP) et Microsoft Azure. [La suite dans le cours](./Cours/4.ServicesCloud.md)
+Le cloud computing offre une multitude de modèles de service pour répondre aux besoins variés des utilisateurs, chacun proposant un niveau d'abstraction et de gestion des ressources distinct. Explorons ces modèles et leur déclinaison dans les plateformes cloud majeures, Google Cloud Platform (GCP) et Microsoft Azure. [La suite dans le cours](./cours/4.ServicesCloud.md)
 
 <img src="./assets/modeles-de-services-cloud.png">
 
@@ -59,7 +59,7 @@ Utilisé les modules [azure](https://docs.ansible.com/ansible/latest/collections
 
 ### Comment deployer vos script Ansible ?
 
-`Docker` et `Make` sont les seuls dependance necessaire sur votre systeme ! [Voir les pre-requis et les spécificités concernant le fichier Makefile et comment l'utiliser.](./Cours/10.DeployInstruction.md)
+`Docker` et `Make` sont les seuls dependance necessaire sur votre systeme ! [Voir les pre-requis et les spécificités concernant le fichier Makefile et comment l'utiliser.](./cours/10.DeployInstruction.md)
 
 Le Makefile disponible à la racine de chaque projet permet l'utilisation facile de la cli de votre provider cloud (az cli ou gcloud) et des modules Ansible sans nécessiter de téléchargement supplémentaire. Tout est pré-embarqué dans un conteneur Docker, simplifiant ainsi le déploiement des services cloud sans aucune manipulation supplémentaire de la part de l'utilisateur final.
 
@@ -80,7 +80,7 @@ CLOUD_PROVIDERS_SERVICES
 │   ├── Makefile # L'executeur
 │   └── ...
 ```
-Methodologie de travail et de deploiement en local depuis votre pc en utilisant ce Makefile. Afin de savoir comment deployé avec le Makefile [Voir le cours](./Cours/10.DeployInstruction.md)
+Methodologie de travail et de deploiement en local depuis votre pc en utilisant ce Makefile. Afin de savoir comment deployé avec le Makefile [Voir le cours associé](./cours/10.DeployInstruction.md)
 
 [En savoir plus sur le container de deploiement](https://github.com/Maissacrement/azureDeploy)
 
