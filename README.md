@@ -69,6 +69,7 @@ CLOUD_PROVIDERS_SERVICES
 ├── README.md
 ├── services_name
 │   ├── gcp
+|   │   ├── README.md # Contient les instruction pour deployer
 |   │   ├── deploy.yml # Votre script de deploiement
 |   │   ├── .env.exemple # Vos secret
 |   │   ├── .env # N'existe pas! Copiez le .env.exemple
@@ -76,7 +77,9 @@ CLOUD_PROVIDERS_SERVICES
 |   |   │   ├── my-account.json # Complement de secrets
 |   ├── azure
 |   │   ├── deploy.yml
-|   │   ├── .env # Vos secret
+|   │   ├── .env.exemple # Vos secret
+|   │   ├── .env # N'existe pas! Copiez le .env.exemple
+|   │   ├── README.md # Contient les instruction pour deployer
 │   ├── Makefile # L'executeur
 │   └── ...
 ```
