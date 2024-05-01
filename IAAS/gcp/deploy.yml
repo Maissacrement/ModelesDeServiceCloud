@@ -62,9 +62,6 @@
         state: present
       register: address
 
-    - debug:
-        msg: "Hello {{network}}"
-
     # Doc: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_instance_module.html
     - name: create a instance
       gcp_compute_instance:
