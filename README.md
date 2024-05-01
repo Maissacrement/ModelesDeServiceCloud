@@ -1,4 +1,4 @@
-# Cloud Supdevinci bachelor 3 2024
+# Cloud bachelor 3 2024
 
 ## Infrastructure
 
@@ -109,6 +109,14 @@ https://github.com/Maissacrement/cloudprovision/blob/main/playbook.yml
 
 Adoptez une approche Infrastructure as Code pour générer des machines virtuelles exportables sur n'importe quelle machine, éliminant ainsi l'échange de snapshots
 https://github.com/Maissacrement/FreeBSDAnsible/blob/master/Vagrantfile
+
+Automatiser la configuration du serveur DNS pour lier les microservices Docker en tant qu'adresses DNS, en s'appuyant sur Bind et Python support DoH (DNS over HTTPS):
+https://github.com/Maissacrement/automate_dns/tree/main
+
+
+Chaque périphérique réseau est émulé par un conteneur. Les périphériques de réseau virtuel sont interconnectés par des réseaux locaux L2 virtuels.
+image utilisé: Quagga, FRRouting, Bind, P4, OpenVSwitch, and more
+https://github.com/KatharaFramework/Kathara
 
 ## Comment mettre a jour votre fork github
 

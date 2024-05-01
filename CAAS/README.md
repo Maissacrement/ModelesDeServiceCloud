@@ -1,13 +1,45 @@
-# Utilisez le container as a service CAAS de microsoft azure
+# Deployer un service de type Container as a service CAAS
 
+Déploiement des Container as a Service vers le cloud
 
+# Nginx
 
-# Plus et decouvertes
+Le repertoire nginx n'est pas à configurer sauf si vous souhaitez deployer une image personnalisé.
 
-Automatiser la configuration du serveur DNS pour lier les microservices Docker en tant qu'adresses DNS, en s'appuyant sur Bind et Python support DoH (DNS over HTTPS):
-https://github.com/Maissacrement/automate_dns/tree/main
+# Source
 
+C'est le code où l'application de type CaaS est compilée. L'image du conteneur est gérée par un Makefile, ce qui permet d'automatiser et de rendre plus fiable la création de votre artefact. Vous pouvez après avoir jeter un coup d'oeil, acceder à l'image docker: [maissacrement/azure-functionapp](https://hub.docker.com/repository/docker/maissacrement/ansibledind/general)
 
-Chaque périphérique réseau est émulé par un conteneur. Les périphériques de réseau virtuel sont interconnectés par des réseaux locaux L2 virtuels.
-image utilisé: Quagga, FRRouting, Bind, P4, OpenVSwitch, and more
-https://github.com/KatharaFramework/Kathara
+[Voir le depot git](https://github.com/Maissacrement/azureDeploy)
+
+# Comment deployer
+
+[Cours sur comment fonctionne le makefile](../cours/10.DeployInstruction.md). Toute les commande devrons etre executer depuis le repertoire CaaS ou se trouve le Makefile.
+
+## GCP
+
+Si vous faite l'exercice, et que vous modifié le fichier `deploy_exo.yml` dans repertoire `gcp`. Vous devrez a partir du dossier CaaS, tapez:
+
+```bash
+make deploy_gcp_exo_caas
+```
+
+Si vous souhaitez uniquement voir et executez le corrigé `deploy.yml` dans le repertoire `gcp`, vous devrez taper:
+
+```bash
+make deploy_gcp_caas
+```
+
+## AZURE
+
+Si vous faite l'exercice, et que vous modifié le fichier `deploy_exo.yml` dans repertoire `azure`. Vous devrez a partir du dossier caas, tapez:
+
+```bash
+make deploy_azure_exo_caas
+```
+
+Si vous souhaitez uniquement voir et executez le corrigé `deploy.yml` dans le repertoire `azure`, vous devrez taper:
+
+```bash
+make deploy_azure_caas
+```

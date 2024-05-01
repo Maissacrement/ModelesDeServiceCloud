@@ -1,20 +1,22 @@
 #!make
-APP_NAME=iaas_deployer
+APP_NAME=paas_deployer
 PATH_VALUE=''
 ADD_ARGS=
 
-ifeq ($(MAKECMDGOALS),deploy_azure_iaas)
+ifeq ($(MAKECMDGOALS),deploy_azure_paas)
     $(eval PATH_VALUE := azure)  # Modifiez la valeur de la variable PATH_VALUE
-else ifeq ($(MAKECMDGOALS),deploy_gcp_iaas)
+	ADD_ARGS := --volume=${PWD}/kubernetes/app.yml:/home/kubeapplication.yml
+else ifeq ($(MAKECMDGOALS),deploy_gcp_paas)
     $(eval PATH_VALUE := gcp)  # Définir une valeur par défaut si MAKECMDGOALS n'est pas "run"
 	ADD_ARGS := --volume=${PWD}/${PATH_VALUE}/account:/workdir/account
-	ADD_ARGS += --volume=${PWD}/${PATH_VALUE}/app:/workdir/app
-else ifeq ($(MAKECMDGOALS),deploy_azure_exo_iaas)
+	ADD_ARGS += --volume=${PWD}/kubernetes/app.yml:/home/kubeapplication.yml
+else ifeq ($(MAKECMDGOALS),deploy_azure_exo_paas)
     $(eval PATH_VALUE := azure)  # Modifiez la valeur de la variable PATH_VALUE
-else ifeq ($(MAKECMDGOALS),deploy_gcp_exo_iaas)
+	ADD_ARGS := --volume=${PWD}/kubernetes/app.yml:/home/kubeapplication.yml
+else ifeq ($(MAKECMDGOALS),deploy_gcp_exo_paas)
     $(eval PATH_VALUE := gcp)  # Définir une valeur par défaut si MAKECMDGOALS n'est pas "run"
 	ADD_ARGS := --volume=${PWD}/${PATH_VALUE}/account:/workdir/account
-	ADD_ARGS += --volume=${PWD}/${PATH_VALUE}/app:/workdir/app
+	ADD_ARGS += --volume=${PWD}/kubernetes/app.yml:/home/kubeapplication.yml
 endif
 
 env ?= ./${PATH_VALUE}/.env
@@ -41,12 +43,14 @@ deploy_exo: clean
 		--env-file="${PWD}/${PATH_VALUE}/.env" \
 	docker.io/maissacrement/ansibledind:latest
 
-.PHONY: deploy_${PATH_VALUE}_iaas
-deploy_${PATH_VALUE}_iaas: deploy
-	@docker exec -it $(APP_NAME) /bin/bash -c "ansible-playbook /home/deploy.yml"
+.PHONY: deploy_${PATH_VALUE}_paas
+deploy_${PATH_VALUE}_paas: deploy
+	@docker exec -it $(APP_NAME) /bin/bash
 	@docker rm -f /$(APP_NAME);echo 1;
 
-.PHONY: deploy_${PATH_VALUE}_exo_iaas
-deploy_${PATH_VALUE}_exo_iaas: deploy_exo
+# -c "ansible-playbook /home/deploy.yml"
+
+.PHONY: deploy_${PATH_VALUE}_exo_paas
+deploy_${PATH_VALUE}_exo_paas: deploy_exo
 	@docker exec -it $(APP_NAME) /bin/bash -c "ansible-playbook /home/deploy.yml"
 	@docker rm -f /$(APP_NAME);echo 1;

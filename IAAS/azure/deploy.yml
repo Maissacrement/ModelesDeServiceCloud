@@ -1,0 +1,141 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    vm_name: testvm123
+    rg_name: testrg123
+    ipPublic: web
+    # Below is UTF-16 Base64 encoding for:
+    #   Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1')); Enable-WSManCredSSP -Role Server -Force
+    winrm_enable_script: aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2Fuc2libGUvYW5zaWJsZS1kb2N1bWVudGF0aW9uL2RldmVsL2V4YW1wbGVzL3NjcmlwdHMvQ29uZmlndXJlUmVtb3RpbmdGb3JBbnNpYmxlLnBzMQ==
+    install_docker: aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21pY3Jvc29mdC9XaW5kb3dzLUNvbnRhaW5lcnMvTWFpbi9oZWxwZnVsX3Rvb2xzL0luc3RhbGwtRG9ja2VyQ0UvaW5zdGFsbC1kb2NrZXItY2UucHMx
+
+  tasks:
+    - name: Login to azure
+      shell: az login --username "{{lookup('env', 'email')}}" --password "{{lookup('env', 'password')}}"
+      register: ps
+      
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{rg_name}}"
+        location: eastus
+
+    - name: Create virtual network
+      azure_rm_virtualnetwork:
+        resource_group: "{{rg_name}}"
+        name: vNet
+        address_prefixes: "10.0.0.0/16"
+
+    - name: Add subnet
+      azure_rm_subnet:
+        resource_group: "{{rg_name}}"
+        name: webSubnet
+        address_prefix: "10.0.1.0/24"
+        virtual_network: vNet
+
+    - name: Create public IP address
+      azure_rm_publicipaddress:
+        resource_group: "{{rg_name}}"
+        allocation_method: Static
+        name: "{{ipPublic}}"
+      register: output_ip_address
+    
+    - name: Output public IP
+      debug:
+        msg: "The public IP is {{ output_ip_address.state.ip_address }}"
+    
+    - name: Create Network Security Group
+      azure_rm_securitygroup:
+        resource_group: "{{rg_name}}"
+        name: networkSecurityGroup
+        rules:
+          - name: 'allow_rdp'
+            protocol: Tcp
+            destination_port_range: 3389
+            access: Allow
+            priority: 1001
+            direction: Inbound
+          - name: 'allow_web_traffic'
+            protocol: Tcp
+            destination_port_range:
+              - 80
+              - 443
+            access: Allow
+            priority: 1002
+            direction: Inbound
+          - name: 'allow_powershell_remoting'
+            protocol: Tcp
+            destination_port_range: 
+              - 5985
+              - 5986
+            access: Allow
+            priority: 1003
+            direction: Inbound
+    
+    - name: Create a network interface
+      azure_rm_networkinterface:
+        name: webNic
+        resource_group: "{{rg_name}}"
+        virtual_network: vNet
+        subnet_name: webSubnet
+        security_group: networkSecurityGroup
+        ip_configurations:
+          - name: default
+            public_ip_address_name: "{{ipPublic}}"
+            primary: True
+
+    - name: Create VM with defaults
+      shell: |
+        az vm create \
+          --resource-group "{{rg_name}}" \
+          --name {{vm_name}} \
+          --image MicrosoftWindowsDesktop:windows-11:win11-23h2-avd:22631.3447.240405 \
+          --public-ip-sku Standard \
+          --admin-username "{{lookup('env', 'vm_user')}}" \
+          --admin-password "{{lookup('env', 'vm_password')}}" \
+          --vnet-name webNic --subnet webSubnet
+    
+    #- name: create Azure vm extension to enable HTTPS WinRM listener
+    #  azure_rm_virtualmachineextension:
+    #    name: winrm-extension
+    #    resource_group: "{{ rg_name }}"
+    #    virtual_machine_name: "{{ vm_name }}"
+    #    publisher: Microsoft.Compute
+    #    virtual_machine_extension_type: CustomScriptExtension
+    #    type_handler_version: 1.9
+    #    settings: '{"commandToExecute": "powershell.exe -ExecutionPolicy ByPass -EncodedCommand {{winrm_enable_script}}"}'
+    #    auto_upgrade_minor_version: true
+
+    # Install docker on vm if fail just replay installation
+    # link: https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1
+    - name: create Azure vm extension to install docker
+      azure_rm_virtualmachineextension:
+        name: winrm-extension
+        resource_group: "{{ rg_name }}"
+        virtual_machine_name: "{{ vm_name }}"
+        publisher: Microsoft.Compute
+        virtual_machine_extension_type: CustomScriptExtension
+        type_handler_version: 1.9
+        settings: '{"commandToExecute": "powershell.exe -ExecutionPolicy ByPass -EncodedCommand {{install_docker}}"}'
+        auto_upgrade_minor_version: true
+
+    - name: Get vm public ip
+      shell: |
+        az vm show -d -g "{{rg_name}}" -n "{{vm_name}}" --query publicIps
+      register: vm_public_ip
+
+    - set_fact:
+        vm_public_ip: "{{vm_public_ip | replace('\"', '')}}"
+    
+    - name: Output public IP
+      debug:
+        msg: "The public IP of your vm is {{ vm_public_ip.stdout }}"
+
+    - name: wait for the rdp port to come online
+      wait_for:
+        port: 3389
+        host: "{{vm_public_ip.stdout}}"
+        timeout: 600
+        connect_timeout: 30
+    

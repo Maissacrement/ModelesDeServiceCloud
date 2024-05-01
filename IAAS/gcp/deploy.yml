@@ -1,0 +1,101 @@
+- name: Create an instance
+  hosts: localhost
+  gather_facts: false
+  vars:
+    gcp_project: "{{lookup('env', 'GCP_PROJECT_NAME')}}"
+    gcp_cred_kind: serviceaccount
+    gcp_cred_file: "{{lookup('env', 'SERVICE_ACCOUNT_PRIVATE_KEY_JSON')}}"
+    zone: "us-central1-a"
+    region: "us-central1"
+
+  tasks:
+   
+    # startup.sh
+    - name: INIT gcp credentials
+      shell: |
+        /workdir/startup.sh
+
+    - name: configure compute location
+      shell: |
+        gcloud config set compute/region {{region}}
+        gcloud config set compute/zone {{zone}}
+
+    # doc: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_disk_module.html
+    # os image gcloud doc: https://cloud.google.com/compute/docs/images?hl=fr#os-compute-support
+    # list images: gcloud compute images list
+    - name: create a disk
+      gcp_compute_disk:
+        name: 'disk-instance'
+        size_gb: 50
+        source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts'
+        zone: "{{ zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_cred_file }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+        state: present
+      register: disk
+
+    # https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_network_module.html
+    - name: create a network
+      google.cloud.gcp_compute_network:
+        name: network-instance
+        auto_create_subnetworks: true
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_cred_file }}"
+        state: present
+      register: network
+
+    - name: create a address
+      gcp_compute_address:
+        name: 'address-instance'
+        region: "{{ region }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_cred_file }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+        state: present
+      register: address
+
+    - debug:
+        msg: "Hello {{network}}"
+
+    # Doc: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_instance_module.html
+    - name: create a instance
+      gcp_compute_instance:
+        state: present
+        name: test-vm
+        machine_type: c2d-highcpu-2
+        metadata:
+          ssh-keys: "emmariodelar:YOUR_SSH_PUB_KEY"
+        disks:
+          - auto_delete: true
+            boot: true
+            source: "{{ disk }}"
+        network_interfaces:
+          - network: null # "{{network}}" # use default
+            access_configs:
+              - name: 'External NAT'
+                nat_ip: "{{ address }}"
+                type: 'ONE_TO_ONE_NAT'
+        zone: "{{ zone }}"
+        project: "{{ gcp_project }}"
+        auth_kind: "{{ gcp_cred_kind }}"
+        service_account_file: "{{ gcp_cred_file }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+      register: instance
+
+    - debug:
+        msg: "Debug address {{ address.address }}"
+
+    #gcloud compute ssh --zone "us-central1-a" "test-vm" --project "maps-341814"
+    - name: Config ssh
+      shell: |
+        gcloud compute firewall-rules update default-allow-ssh --allow tcp:22
+
+    - name: Wait for SSH to come up
+      wait_for: host={{ address.address }} port=22 delay=10 timeout=60

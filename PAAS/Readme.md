@@ -1,6 +1,8 @@
-# Deploiement Infrastructure as a Service (IAAS)
+# Deploiement Plateforme as a Service (IAAS)
 
-Déploiement des Infrastructure as a Service vers le cloud
+GKE et AKS sont des services phares de Google Cloud et Microsoft Azure respectivement, offrant une solution PaaS complète pour le déploiement et la gestion d'applications conteneurisées. Ces services permettent aux développeurs de se concentrer entièrement sur le développement et l'innovation, en déchargeant les préoccupations liées à la gestion de l'infrastructure sous-jacente.
+
+Avec GKE et AKS, Google Cloud et Microsoft Azure simplifient considérablement le déploiement et l'orchestration des conteneurs, en fournissant une plateforme robuste et hautement disponible pour exécuter des applications basées sur Kubernetes. Ces services prennent en charge l'automatisation des mises à jour, la mise à l'échelle automatique et la surveillance avancée, offrant ainsi une expérience sans souci pour les développeurs.
 
 # Source
 

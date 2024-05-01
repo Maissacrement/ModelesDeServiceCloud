@@ -1,0 +1,18 @@
+- hosts: localhost
+  vars:
+    resource_group: myResourceGroup
+    location: eastus 
+    aci_1_name: myACI1
+  tasks:
+    - name: Login to azure
+      shell: az login --username "{{lookup('env', 'email')}}" --password "{{lookup('env', 'password')}}"
+      register: ps
+
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: eastus
+
+    - name: Créez un conteneur nginx dans un groupe de conteneurs avec 1 coeur et 1 Go de mémoire.
+      shell: |
+        az container create -g "{{ resource_group }}" --name myapp --image nginx:latest --cpu 1 --memory 1

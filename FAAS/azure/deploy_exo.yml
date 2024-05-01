@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    resource_group: ansible-rg
+    az_plan_name: appservice-plan
+    storage_account_name: "2024baschelor2"
+
+  tasks:
+  - name: Login to azure
+    shell: az login --username "{{lookup('env', 'email')}}" --password "{{lookup('env', 'password')}}"
+    register: ps
+
+  - debug:
+      msg: "Documentation az storage account create: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_resourcegroup_module.html"
+
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      # Completer ce script
+
+  - debug:
+      msg: "Documentation az storage account create: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_appserviceplan_module.html"
+
+  - name: Create an Azure App Service Plan
+    azure_rm_appserviceplan:
+      name: "{{az_plan_name}}"
+      # Completer ce script
+
+  - debug:
+      msg: "Documentation az storage account create: https://learn.microsoft.com/fr-fr/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create"
+
+  - name: Create a Storage Account for Azure Function
+    shell: |
+      az storage account create "completer ce script"
+      
+    register: output
+
+  - debug:
+      msg: "Documentation azure_rm_functionapp: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_functionapp_module.html"
+
+  - name: Create container based function app
+    azure_rm_functionapp:
+      resource_group: "{{ resource_group }}"
+      name: un_url_pour_eviter_les_collision_de_domain
+      # Completer ce script

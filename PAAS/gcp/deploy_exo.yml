@@ -1,0 +1,109 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    region: us-west1
+    zone: us-west1-c
+    
+  tasks:
+
+    - name: INIT gcp credentials
+      shell: |
+        /workdir/startup.sh
+        gcloud auth configure-docker
+        gcloud config set compute/region {{region}}
+        gcloud config set compute/zone {{zone}}
+
+    - debug:
+        msg: "Documentation gcloud container clusters: https://cloud.google.com/sdk/gcloud/reference/container/clusters/create"
+
+    - name: Run kubernetes GKE cluster
+      shell: |
+        gcloud container clusters "completer ce script"
+
+    - name: Install and inject secret to kubectl
+      shell: |
+        gcloud components install kubectl
+
+    - name: Deploy my app on GKE
+      shell: |
+        kubectl apply -f /home/kubeapplication.yml
+
+    #- name: Create and bind my role
+    #  gcp_iam_role:
+    #    name: "iam.roleViewer"
+    #    title: DEPLOY AN INFRA ON GCP
+    #    project: "{{lookup('env', 'GCP_PROJECT_NAME')}}"
+    #    auth_kind: serviceaccount
+    #    service_account_file: "{{lookup('env', 'SERVICE_ACCOUNT_PRIVATE_KEY_JSON')}}"
+    #    included_permissions:
+    #      - serviceusage.services.get
+    #      - run.services.get
+    #      - resourcemanager.projects.get
+    #      - resourcemanager.projectCreator
+    #      - iam.roles.get
+    #      - iam.roles.list
+    #      - resourcemanager.projects.get
+    #      - resourcemanager.projects.getIamPolicy
+    #- name: Activer l'API Cloud Run Admin
+    #  gcp_serviceusage_service:
+    #    name: run.googleapis.com
+    #    project: "{{lookup('env', 'GCP_PROJECT_NAME')}}"
+    #    auth_kind: serviceaccount
+    #    service_account_file: "{{lookup('env', 'SERVICE_ACCOUNT_PRIVATE_KEY_JSON')}}"
+    #    state: present
+    #  delegate_to: localhost
+    #  register: activate_run_api
+    #- name: Set rules and Active service account
+    #  shell: |
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/privateca.admin  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role "roles/owner"  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/serviceusage.services.get   #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/iam.roles.get  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/run.services.get  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/resourcemanager.projects.get  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role "roles/serviceusage.serviceUsageViewer"  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role "roles/compute.instanceAdmin.v1"  #
+    #    gcloud auth activate-service-account \
+    #      {{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --key-file={{lookup('env', 'SERVICE_ACCOUNT_PRIVATE_KEY_JSON')}} \
+    #      --project={{lookup('env', 'GCP_PROJECT_NAME')}}  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role "roles/iam.serviceAccountUser"  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/resourcemanager.projectCreator  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/integrations.apigeeIntegrationInvokerRole  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/iam.serviceAccounts.actAs  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/cloudfunctions.serviceAgent  #
+    #    gcloud projects add-iam-policy-binding {{lookup('env', 'GCP_PROJECT_NAME')}} \
+    #      --member serviceAccount:{{lookup('env', 'SERVICE_ACCOUNT_NAME')}}@{{lookup('env', 'GCP_PROJECT_NAME')}}.iam.gserviceaccount.com \
+    #      --role roles/run.services.update  #
+    #    #gcloud services enable apigateway.googleapis.com
+    #    #gcloud services enable servicemanagement.googleapis.com
+    #    #gcloud services enable servicecontrol.googleapis.com
+    #    #gcloud services enable cloudresourcemanager.googleapis.com

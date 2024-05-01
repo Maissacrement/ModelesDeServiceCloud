@@ -1,0 +1,74 @@
+- name: Azure configuration
+  hosts: 127.0.0.1
+  connection: local
+  vars:
+    rg_name: testrg1234
+    aks_name: myAutoApp975
+
+  tasks:
+
+  ############# DOCKER REGISTRY AZURE #########
+  #- name: Create an azure container registry
+  #  azure_rm_containerregistry:
+  #    name: autoapp
+  #    location: eastus
+  #    resource_group: myResourceGroupTest
+  #    admin_user_enabled: true
+  #    sku: Basic
+  #    tags:
+  #        Release: v1
+  #        Environment: Production
+
+  #- name: Docker push to the registry
+  #  shell: |
+  #    az acr login --name autoapp
+  #    docker pull mcr.microsoft.com/azuredocs/azure-vote-front:v1
+  #    docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 autoapp.azurecr.io/azure-vote-front:v1
+  #    docker push autoapp.azurecr.io/azure-vote-front:v1
+  ######### END DOCKER REGISTRY AZURE #########
+
+  - name: Login to azure
+    shell: az login --username "{{lookup('env', 'email')}}" --password "{{lookup('env', 'password')}}"
+    register: ps
+      
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: "{{rg_name}}"
+      location: eastus
+      tags:
+        testing: testing
+        delete: never
+
+  - name: Create an azure container registry
+    azure_rm_containerregistry:
+      name: autoapp2
+      location: eastus
+      resource_group: "{{rg_name}}"
+      admin_user_enabled: true
+      sku: Basic
+      tags:
+          Release: v1
+          Environment: Production
+
+  - debug: 
+      var: ps.stdout_lines
+
+  - name: Create aks cluster
+    shell: |
+      az aks create --resource-group {{rg_name}} --name {{aks_name}} --node-count 2 --attach-acr autoapp2 --generate-ssh-keys 2>/dev/null &  
+
+  - name: Install and Link azure-cli to kubectl
+    shell: |
+      az aks install-cli  
+    
+  - name: Inject credential to kubectl
+    shell: |
+      az aks get-credentials --resource-group {{rg_name}} --name {{aks_name}} 
+
+  - name: Deploy Kubernetes spec
+    shell: |
+      kubectl apply -f /home/kubeapplication.yml
+    register: kube
+
+  - debug: 
+      var: kube.stdout_lines
