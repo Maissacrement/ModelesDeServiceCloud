@@ -72,11 +72,7 @@
         name: test-vm
         machine_type: c2d-highcpu-2
         metadata:
-<<<<<<< HEAD
-          ssh-keys: "emmariodelar:YOUR_SSH_PUB_KEY"
-=======
           ssh-keys: "{{username}}:{{SSH_PUB_KEY_STRING}}"
->>>>>>> 301521c (Ajout des correction des exo et integration de gcp)
         disks:
           - auto_delete: true
             boot: true
